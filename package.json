@@ -1,0 +1,25 @@
+{
+  "name": "easymich-webdav",
+  "version": "1.0.1",
+  "main": "index.html",
+  "window": {
+    "title": "EasyMichML",
+    "width": 800,
+    "height": 600
+  },
+  "scripts": {
+    "start": "nw ."
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "net": "^1.0.2",
+    "node-sftp-server": "^0.3.0",
+    "nw": "^0.92.0-sdk",
+    "os": "^0.1.2",
+    "p-limit": "^4.0.0",
+    "ssh2": "^1.16.0",
+    "ssh2-sftp-server": "^1.1.2",
+    "webdav-server": "^2.6.2"
+  }
+}
