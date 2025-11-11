@@ -18,6 +18,7 @@
     "nw": "^0.92.0-sdk",
     "os": "^0.1.2",
     "p-limit": "^4.0.0",
+    "ssh-keygen": "^0.5.0",
     "ssh2": "^1.16.0",
     "ssh2-sftp-server": "^1.1.2",
     "webdav-server": "^2.6.2"

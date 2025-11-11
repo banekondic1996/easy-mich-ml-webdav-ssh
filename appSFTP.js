@@ -1,6 +1,6 @@
 const { Server } = require('ssh2');
 const { execSync } = require('child_process');
-
+var keygen = require('ssh-keygen');
 const DEFAULT_USERNAME = 'admin';
 const DEFAULT_PASSWORD = 'michmich';
 const DEFAULT_ROOT_DIR = window.path.join(process.cwd(), 'sftp_files');
@@ -15,6 +15,27 @@ function generateTempKey() {
         } catch (e) {
             console.error('Failed to generate SSH key:', e.message);
             throw new Error('SSH key generation failed. Ensure ssh-keygen is installed.');
+        }
+    } else {
+        console.log(`Using existing private key at ${KEY_PATH}`);
+    }
+}
+function generateTempKeyWin() {
+    if (!window.fs.existsSync(KEY_PATH)) {
+        try {
+            var location = KEY_PATH;
+            keygen({
+            location: location,
+            read: true,
+            }, function(err, out){
+                if(err) return console.log('Something went wrong: '+err);
+                console.log('Keys created!');
+                console.log('private key: '+out.key);
+                console.log('public key: '+out.pubKey);
+            });
+        } catch (e) {
+            console.error('Failed to generate SSH key:', e.message);
+            throw new Error('SSH key generation failed.');
         }
     } else {
         console.log(`Using existing private key at ${KEY_PATH}`);
